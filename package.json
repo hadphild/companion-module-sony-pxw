@@ -1,0 +1,12 @@
+{
+  "name": "sony-pxw",
+  "version": "0.1.0",
+  "main": "main.js",
+  "license": "MIT",
+  "description": "Sony PXW-Z300 / PXW-Z200 / HXR-NX800 camcorder control over PTP-IP via SSH",
+  "scripts": { "dev": "node dev.js" },
+  "dependencies": {
+    "@companion-module/base": "^1.11.0",
+    "ssh2": "^1.16.0"
+  }
+}

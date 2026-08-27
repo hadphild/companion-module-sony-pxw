@@ -1,0 +1,3265 @@
+[
+ {
+  "code": 53775,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 5733,
+  "form": 1,
+  "min": 2000,
+  "max": 15000,
+  "step": 1
+ },
+ {
+  "code": 53790,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53804,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   261
+  ],
+  "set_values": [
+   1,
+   2,
+   261
+  ]
+ },
+ {
+  "code": 53825,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 17,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   16,
+   17,
+   32
+  ]
+ },
+ {
+  "code": 53854,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -8,
+  "max": 8,
+  "step": 1
+ },
+ {
+  "code": 53784,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": -1,
+  "form": 1,
+  "min": -1,
+  "max": 100,
+  "step": 1
+ },
+ {
+  "code": 53834,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53848,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53883,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53853,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 16842752,
+  "form": 0
+ },
+ {
+  "code": 53894,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 4,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   23,
+   2,
+   10,
+   74,
+   4,
+   68,
+   9,
+   6,
+   8
+  ]
+ },
+ {
+  "code": 53832,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "set_values": [
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ {
+  "code": 53846,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "set_values": [
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ {
+  "code": 53881,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53882,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53906,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53907,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53908,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53851,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53892,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   0,
+   1
+  ],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53893,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 20487,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 2,
+  "default": 65535,
+  "current": 800,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   190,
+   200,
+   220,
+   240,
+   260,
+   280,
+   310,
+   340,
+   370,
+   400,
+   440,
+   480,
+   520,
+   560,
+   620,
+   680,
+   730,
+   800,
+   870,
+   960,
+   1000,
+   1100,
+   1200,
+   1400,
+   1500,
+   1600,
+   65533
+  ]
+ },
+ {
+  "code": 53249,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53267,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53276,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53283,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53308,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   3,
+   260,
+   261,
+   262,
+   263,
+   264,
+   265,
+   266,
+   267,
+   268,
+   269,
+   270,
+   271,
+   272,
+   273,
+   274,
+   275
+  ],
+  "set_values": [
+   1,
+   2,
+   3,
+   260,
+   261,
+   262,
+   263,
+   264,
+   265,
+   266,
+   267,
+   268,
+   269,
+   270,
+   271,
+   272,
+   273,
+   274,
+   275
+  ]
+ },
+ {
+  "code": 53440,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53330,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 50,
+  "form": 2,
+  "get_values": [
+   60,
+   59,
+   58,
+   57,
+   56,
+   55,
+   54,
+   53,
+   52,
+   51,
+   50,
+   49,
+   48,
+   47,
+   46,
+   45,
+   44,
+   43,
+   42,
+   41,
+   40,
+   39,
+   38,
+   37,
+   36,
+   35,
+   34,
+   33,
+   32,
+   31,
+   30,
+   29,
+   28,
+   27,
+   26,
+   25,
+   24,
+   23,
+   22,
+   21,
+   20,
+   19,
+   18,
+   17,
+   16,
+   15,
+   14,
+   13,
+   12,
+   11,
+   10,
+   9,
+   8,
+   7,
+   6,
+   5,
+   4,
+   3,
+   2,
+   1
+  ],
+  "set_values": [
+   60,
+   59,
+   58,
+   57,
+   56,
+   55,
+   54,
+   53,
+   52,
+   51,
+   50,
+   49,
+   48,
+   47,
+   46,
+   45,
+   44,
+   43,
+   42,
+   41,
+   40,
+   39,
+   38,
+   37,
+   36,
+   35,
+   34,
+   33,
+   32,
+   31,
+   30,
+   29,
+   28,
+   27,
+   26,
+   25,
+   24,
+   23,
+   22,
+   21,
+   20,
+   19,
+   18,
+   17,
+   16,
+   15,
+   14,
+   13,
+   12,
+   11,
+   10,
+   9,
+   8,
+   7,
+   6,
+   5,
+   4,
+   3,
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53312,
+  "dt": 65535,
+  "dtname": "str",
+  "writable": false,
+  "enable": 1,
+  "default": "",
+  "current": "1.08",
+  "form": 0
+ },
+ {
+  "code": 53287,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 18,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   18
+  ]
+ },
+ {
+  "code": 53538,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   1,
+   3,
+   2,
+   5,
+   8,
+   9
+  ],
+  "set_values": [
+   1,
+   3,
+   2,
+   5,
+   8,
+   9
+  ]
+ },
+ {
+  "code": 53539,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 100,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53543,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 50,
+  "form": 1,
+  "min": 1,
+  "max": 100,
+  "step": 1
+ },
+ {
+  "code": 53453,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   3
+  ],
+  "set_values": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "code": 53454,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 3,
+  "form": 1,
+  "min": 1,
+  "max": 5,
+  "step": 1
+ },
+ {
+  "code": 53455,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53518,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53519,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1
+  ]
+ },
+ {
+  "code": 53523,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2,
+   4
+  ]
+ },
+ {
+  "code": 53526,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 20,
+  "max": 8000,
+  "step": 1
+ },
+ {
+  "code": 53527,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 1,
+  "max": 255,
+  "step": 1
+ },
+ {
+  "code": 53420,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16
+  ],
+  "set_values": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16
+  ]
+ },
+ {
+  "code": 53421,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 3,
+  "form": 2,
+  "get_values": [
+   3
+  ],
+  "set_values": [
+   3
+  ]
+ },
+ {
+  "code": 53422,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 125830200,
+  "form": 2,
+  "get_values": [
+   251660400,
+   125830200,
+   83886800
+  ],
+  "set_values": [
+   251660400,
+   125830200,
+   83886800
+  ]
+ },
+ {
+  "code": 53529,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ {
+  "code": 53624,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   4,
+   3,
+   2
+  ],
+  "set_values": [
+   1,
+   4,
+   3,
+   2
+  ]
+ },
+ {
+  "code": 53369,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53587,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   2,
+   1
+  ],
+  "set_values": [
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53588,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   2,
+   1
+  ],
+  "set_values": [
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53448,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16
+  ],
+  "set_values": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16
+  ]
+ },
+ {
+  "code": 53449,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53450,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   259,
+   515,
+   257,
+   1027,
+   1283,
+   513
+  ]
+ },
+ {
+  "code": 53447,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   65535
+  ],
+  "set_values": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   65535
+  ]
+ },
+ {
+  "code": 53387,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53259,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 56000,
+  "form": 1,
+  "min": 0,
+  "max": 9999000,
+  "step": 1000
+ },
+ {
+  "code": 53255,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53344,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 3,
+  "form": 2,
+  "get_values": [
+   1,
+   3,
+   2
+  ],
+  "set_values": [
+   1,
+   3,
+   2
+  ]
+ },
+ {
+  "code": 53250,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53251,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "code": 53252,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1400,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53253,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 4500,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53254,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53256,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -8,
+  "max": 8,
+  "step": 1
+ },
+ {
+  "code": 53258,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 1000,
+  "max": 1500,
+  "step": 100
+ },
+ {
+  "code": 53260,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53261,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 9,
+  "form": 1,
+  "min": -99,
+  "max": 99,
+  "step": 1
+ },
+ {
+  "code": 53262,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 360000,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   360000,
+   300000,
+   270000,
+   240000,
+   216000,
+   210000,
+   180000,
+   172800,
+   150000,
+   144000,
+   120000,
+   90000,
+   86400,
+   72000,
+   45000,
+   30000,
+   22500,
+   11250,
+   5600
+  ]
+ },
+ {
+  "code": 53264,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53265,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 5,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   5
+  ]
+ },
+ {
+  "code": 53266,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1
+  ]
+ },
+ {
+  "code": 53268,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53269,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   16,
+   32,
+   64
+  ],
+  "set_values": [
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   16,
+   32,
+   64
+  ]
+ },
+ {
+  "code": 53270,
+  "dt": 8,
+  "dtname": "u64",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 4294967346,
+  "form": 2,
+  "get_values": [
+   4294967346,
+   4294967356,
+   4294967396,
+   4294967416,
+   4294967421,
+   4294967546,
+   4294967796,
+   4294968296,
+   4294969296,
+   4294971296,
+   4294975296
+  ],
+  "set_values": [
+   4294967346,
+   4294967356,
+   4294967396,
+   4294967416,
+   4294967421,
+   4294967546,
+   4294967796,
+   4294968296,
+   4294969296,
+   4294971296,
+   4294975296
+  ]
+ },
+ {
+  "code": 53271,
+  "dt": 8,
+  "dtname": "u64",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 4294967346,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   4294967346,
+   4294967356,
+   4294967396,
+   4294967416,
+   4294967421,
+   4294967546,
+   4294967796,
+   4294968296,
+   4294969296,
+   4294971296,
+   4294975296
+  ]
+ },
+ {
+  "code": 53272,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53273,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 3,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ]
+ },
+ {
+  "code": 53274,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53275,
+  "dt": 8,
+  "dtname": "u64",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 4294967300,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   4294967300,
+   4294967301,
+   4294967302,
+   4294967303,
+   4294967304,
+   4294967306,
+   4294967307,
+   4294967309,
+   4294967312,
+   4294967315,
+   4294967319,
+   4294967323,
+   4294967328,
+   4294967334,
+   4294967341,
+   4294967350,
+   4294967360,
+   4294967372,
+   4294967387,
+   4294967404,
+   4294967424
+  ]
+ },
+ {
+  "code": 53277,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53278,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 18,
+  "form": 1,
+  "min": 43,
+  "max": -4,
+  "step": 1
+ },
+ {
+  "code": 53279,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 43,
+  "max": -4,
+  "step": 1
+ },
+ {
+  "code": 53284,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 251660400,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   251660400,
+   125830200,
+   125830200,
+   83886800
+  ]
+ },
+ {
+  "code": 53285,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 83886800,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   125830200,
+   83886800
+  ]
+ },
+ {
+  "code": 53288,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 3,
+  "form": 2,
+  "get_values": [
+   2,
+   4,
+   6,
+   8,
+   9,
+   10,
+   23,
+   7,
+   74,
+   68
+  ],
+  "set_values": [
+   2,
+   4,
+   6,
+   8,
+   9,
+   10,
+   23,
+   7,
+   74,
+   68
+  ]
+ },
+ {
+  "code": 53289,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53290,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53291,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 3,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   3
+  ]
+ },
+ {
+  "code": 53292,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 3,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   3
+  ]
+ },
+ {
+  "code": 53294,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1001,
+  "form": 2,
+  "get_values": [
+   1001,
+   1002,
+   1003,
+   1004,
+   1005,
+   1006,
+   1007,
+   1008,
+   1009,
+   1010,
+   1011,
+   1012,
+   1013,
+   1014,
+   1015,
+   1016
+  ],
+  "set_values": [
+   1001,
+   1002,
+   1003,
+   1004,
+   1005,
+   1006,
+   1007,
+   1008,
+   1009,
+   1010,
+   1011,
+   1012,
+   1013,
+   1014,
+   1015,
+   1016
+  ]
+ },
+ {
+  "code": 53295,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53296,
+  "dt": 8,
+  "dtname": "u64",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 18446744073709551615,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   18446744073709551615,
+   18446743970630336513,
+   18446744009285042177,
+   18446744056529682433,
+   18446744069414584321,
+   0,
+   4294967297,
+   17179869185,
+   64424509441,
+   103079215105
+  ]
+ },
+ {
+  "code": 53297,
+  "dt": 65535,
+  "dtname": "str",
+  "writable": false,
+  "enable": 2,
+  "default": "",
+  "current": "",
+  "form": 0
+ },
+ {
+  "code": 53298,
+  "dt": 65535,
+  "dtname": "str",
+  "writable": false,
+  "enable": 2,
+  "default": "",
+  "current": "",
+  "form": 0
+ },
+ {
+  "code": 53299,
+  "dt": 65535,
+  "dtname": "str",
+  "writable": false,
+  "enable": 2,
+  "default": "",
+  "current": "",
+  "form": 0
+ },
+ {
+  "code": 53300,
+  "dt": 65535,
+  "dtname": "str",
+  "writable": false,
+  "enable": 2,
+  "default": "",
+  "current": "",
+  "form": 0
+ },
+ {
+  "code": 53301,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "code": 53302,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "code": 53303,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "code": 53304,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53305,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53306,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53307,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53309,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   0,
+   1
+  ],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53310,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 19900,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53311,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53328,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   2,
+   1
+  ],
+  "set_values": [
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53329,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   2,
+   1
+  ],
+  "set_values": [
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53331,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53332,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 67111964,
+  "form": 2,
+  "get_values": [
+   16777716,
+   33555432,
+   50333648,
+   67111964
+  ],
+  "set_values": [
+   16777716,
+   33555432,
+   50333648,
+   67111964
+  ]
+ },
+ {
+  "code": 53339,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53340,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53341,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53342,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53348,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53349,
+  "dt": 3,
+  "dtname": "i16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -990,
+  "max": 990,
+  "step": 1
+ },
+ {
+  "code": 53350,
+  "dt": 3,
+  "dtname": "i16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -990,
+  "max": 990,
+  "step": 1
+ },
+ {
+  "code": 53351,
+  "dt": 3,
+  "dtname": "i16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -990,
+  "max": 990,
+  "step": 1
+ },
+ {
+  "code": 53352,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   2,
+   1
+  ],
+  "set_values": [
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53353,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   2,
+   1
+  ],
+  "set_values": [
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53354,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 90,
+  "form": 1,
+  "min": 75,
+  "max": 109,
+  "step": 1
+ },
+ {
+  "code": 53355,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -99,
+  "max": 99,
+  "step": 1
+ },
+ {
+  "code": 53356,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   2,
+   1
+  ],
+  "set_values": [
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53357,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -7,
+  "max": 7,
+  "step": 1
+ },
+ {
+  "code": 53363,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53364,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   3
+  ],
+  "set_values": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "code": 53365,
+  "dt": 8,
+  "dtname": "u64",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 4294967300,
+  "form": 2,
+  "get_values": [
+   4294967300,
+   4294967304,
+   4294967312,
+   4294967328,
+   4294967360,
+   4294967424
+  ],
+  "set_values": [
+   4294967300,
+   4294967304,
+   4294967312,
+   4294967328,
+   4294967360,
+   4294967424
+  ]
+ },
+ {
+  "code": 53366,
+  "dt": 8,
+  "dtname": "u64",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 4294967312,
+  "form": 2,
+  "get_values": [
+   4294967300,
+   4294967304,
+   4294967312,
+   4294967328,
+   4294967360,
+   4294967424
+  ],
+  "set_values": [
+   4294967300,
+   4294967304,
+   4294967312,
+   4294967328,
+   4294967360,
+   4294967424
+  ]
+ },
+ {
+  "code": 53367,
+  "dt": 8,
+  "dtname": "u64",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 4294967360,
+  "form": 2,
+  "get_values": [
+   4294967300,
+   4294967304,
+   4294967312,
+   4294967328,
+   4294967360,
+   4294967424
+  ],
+  "set_values": [
+   4294967300,
+   4294967304,
+   4294967312,
+   4294967328,
+   4294967360,
+   4294967424
+  ]
+ },
+ {
+  "code": 53368,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   2,
+   1
+  ]
+ },
+ {
+  "code": 53370,
+  "dt": 65535,
+  "dtname": "str",
+  "writable": false,
+  "enable": 2,
+  "default": "",
+  "current": "",
+  "form": 0
+ },
+ {
+  "code": 53375,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "code": 53376,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 3,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "code": 53381,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 3,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "code": 53382,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 3200,
+  "form": 1,
+  "min": 2000,
+  "max": 15000,
+  "step": 100
+ },
+ {
+  "code": 53383,
+  "dt": 3,
+  "dtname": "i16",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -990,
+  "max": 990,
+  "step": 1
+ },
+ {
+  "code": 53384,
+  "dt": 3,
+  "dtname": "i16",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -990,
+  "max": 990,
+  "step": 1
+ },
+ {
+  "code": 53385,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -99,
+  "max": 99,
+  "step": 1
+ },
+ {
+  "code": 53386,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -99,
+  "max": 99,
+  "step": 1
+ },
+ {
+  "code": 53388,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53389,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53393,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53404,
+  "dt": 65535,
+  "dtname": "str",
+  "writable": false,
+  "enable": 0,
+  "default": "",
+  "current": "",
+  "form": 0
+ },
+ {
+  "code": 53405,
+  "dt": 65535,
+  "dtname": "str",
+  "writable": false,
+  "enable": 0,
+  "default": "",
+  "current": "",
+  "form": 0
+ },
+ {
+  "code": 53406,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 0,
+  "max": 0,
+  "step": 1
+ },
+ {
+  "code": 53407,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53408,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53409,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53410,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53417,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53418,
+  "dt": 1,
+  "dtname": "i8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 1,
+  "min": -99,
+  "max": 99,
+  "step": 1
+ },
+ {
+  "code": 53429,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   2
+  ],
+  "set_values": [
+   2
+  ]
+ },
+ {
+  "code": 53436,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53437,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53442,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2
+  ],
+  "set_values": [
+   1,
+   2
+  ]
+ },
+ {
+  "code": 53767,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [
+   0,
+   1
+  ],
+  "set_values": [
+   0,
+   1
+  ]
+ },
+ {
+  "code": 53768,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [
+   5,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   31,
+   32,
+   34,
+   35
+  ],
+  "set_values": [
+   5,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   31,
+   32,
+   34,
+   35
+  ]
+ },
+ {
+  "code": 53769,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [
+   6
+  ],
+  "set_values": [
+   6
+  ]
+ },
+ {
+  "code": 53772,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53531,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 32,
+  "form": 2,
+  "get_values": [
+   32
+  ],
+  "set_values": [
+   32
+  ]
+ },
+ {
+  "code": 53532,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 4810,
+  "form": 2,
+  "get_values": [
+   4810
+  ],
+  "set_values": [
+   4810
+  ]
+ },
+ {
+  "code": 53533,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1
+  ],
+  "set_values": [
+   1
+  ]
+ },
+ {
+  "code": 53534,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [
+   2
+  ],
+  "set_values": [
+   2
+  ]
+ },
+ {
+  "code": 53929,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53930,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53931,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53528,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   2
+  ]
+ },
+ {
+  "code": 53530,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   2
+  ]
+ },
+ {
+  "code": 53937,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 0,
+  "default": 0,
+  "current": 0,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   1,
+   257
+  ]
+ },
+ {
+  "code": 53950,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16
+  ],
+  "set_values": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16
+  ]
+ },
+ {
+  "code": 53951,
+  "dt": 65535,
+  "dtname": "str",
+  "writable": true,
+  "enable": 1,
+  "default": "",
+  "current": "RTMP Settings1",
+  "form": 0
+ },
+ {
+  "code": 53939,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": true,
+  "enable": 2,
+  "default": 0,
+  "current": 2,
+  "form": 2,
+  "get_values": [],
+  "set_values": [
+   2
+  ]
+ },
+ {
+  "code": 53952,
+  "dt": 8,
+  "dtname": "u64",
+  "writable": true,
+  "enable": 1,
+  "default": 0,
+  "current": 9000,
+  "form": 1,
+  "min": 4500,
+  "max": 27000,
+  "step": 100
+ },
+ {
+  "code": 53708,
+  "dt": 2,
+  "dtname": "u8",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 1,
+  "form": 2,
+  "get_values": [
+   1,
+   0
+  ],
+  "set_values": [
+   1,
+   0
+  ]
+ },
+ {
+  "code": 53815,
+  "dt": 4,
+  "dtname": "u16",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 25,
+  "form": 2,
+  "get_values": [],
+  "set_values": []
+ },
+ {
+  "code": 53780,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 22236000,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53335,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 100,
+  "form": 2,
+  "get_values": [
+   100
+  ],
+  "set_values": [
+   100
+  ]
+ },
+ {
+  "code": 53337,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 100,
+  "form": 2,
+  "get_values": [
+   100
+  ],
+  "set_values": [
+   100
+  ]
+ },
+ {
+  "code": 53338,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 100,
+  "form": 2,
+  "get_values": [
+   100
+  ],
+  "set_values": [
+   100
+  ]
+ },
+ {
+  "code": 53439,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 101,
+  "form": 2,
+  "get_values": [
+   101
+  ],
+  "set_values": [
+   101
+  ]
+ },
+ {
+  "code": 53441,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 4194292,
+  "form": 1,
+  "min": 0,
+  "max": 4294967295,
+  "step": 1
+ },
+ {
+  "code": 53696,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 1,
+  "default": 0,
+  "current": 100,
+  "form": 2,
+  "get_values": [
+   100
+  ],
+  "set_values": [
+   100
+  ]
+ },
+ {
+  "code": 57574,
+  "dt": 6,
+  "dtname": "u32",
+  "writable": false,
+  "enable": 2,
+  "default": 0,
+  "current": 100,
+  "form": 2,
+  "get_values": [
+   100
+  ],
+  "set_values": [
+   100
+  ]
+ }
+]

@@ -1,0 +1,76 @@
+# PXW-Z300 control research
+
+Camera: PXW-Z300, firmware 1.08
+
+## Control path (verified working)
+
+    SSH :22  (admin / password, keyboard-interactive)
+      └─ direct-tcpip forward to  localhost:15740     <- ONLY permitted target
+           └─ PTP-IP  (InitCommandRequest / InitEventRequest)
+                └─ Sony PTP extensions (VendorExtensionID 17)
+
+Notes:
+- The camera's SSH allows no shell, no exec, no subsystem; only the one
+  direct-tcpip forward to localhost:15740. Port 15740 is NOT reachable directly.
+- Two SSH connections are needed: one for the PTP command channel, one for events.
+- SDIO_GetExtDeviceInfo (0x9202) must be called with version 0x012C (300).
+  0x00C8 only exposes 5 properties; 0x0190+ returns 0xA101.
+
+## Handshake
+
+    OpenSession           0x1002 (1)
+    SDIO_Connect          0x9201 (1,0,0)
+    SDIO_Connect          0x9201 (2,0,0)
+    SDIO_GetExtDeviceInfo 0x9202 (0x012C)   -> 183 props, 25 controls
+    SDIO_Connect          0x9201 (3,0,0)
+    SDIO_GetAllExtDevicePropInfo 0x9209     -> 5077 bytes, all 183 props
+
+## SDIO_GetAllExtDevicePropInfo wire format
+
+    u32 count
+    u32 reserved
+    per property:
+      u16 code
+      u16 dataType
+      u8  getSet          (1 = writable)
+      u8  isEnable        (0 = currently greyed out)
+      val defaultValue
+      val currentValue
+      u8  formFlag
+      form 1 (range): min, max, step
+      form 2 (enum) : u16 nGet + values, u16 nSet + values   <- TWO lists
+
+## Confirmed properties
+
+    0x5007  Iris        f-number x100   (cur 800 = f/8.0), 27 steps
+    0xD20F  ColorTemp   2000..15000 K   (cur 5733)
+    0xD00E  Shutter     angle x1000     (360000 = 360.0 deg), 19 steps
+    0xD004  Focus dist  metres x100     (1400 = 14.00 m)
+    0xD005  Focus dist  feet x100       (4500 = 45.00 ft)
+    0xD086  WB preset K 2000..15000 step 100
+
+## Control gate (important)
+
+Property writes via `SDIO_SetExtDevicePropValue` (0x9205) return `rc=0x2001`
+(OK) but are silently ignored unless
+**[Network] > [Wired LAN] > [Camera Remote Control]** is set to **Enable**.
+
+Observed while that setting was disabled:
+- all 183 properties readable, `SDIO_GetDisplayStringList` readable
+- `0xD006` (focus distance unit, a display preference) — writable
+- `0xD2E4` / `0xD2EF` (touch focus via ControlDevice 0x9207) — effective
+- iris `0x5007`, colour temp `0xD20F`, shutter, record — accepted and ignored
+
+`enable` on a property is a *separate* gate meaning "a physical switch owns this
+control right now": 0 unavailable, 1 locked, 2 settable. Both must be satisfied.
+
+## Switch-tracking properties
+
+Flipping the iris and focus switches to manual moved:
+
+    0xD007  1 -> 2   focus mode      (CONFIRMED)
+    0xD073  1 -> 2   iris mode       (inferred - mirrors 0xD007 exactly)
+    0xD074  1 -> 0
+    0xD091  1 -> 0
+    0xD019  3 -> 5
+    0xD01B  4294967300 -> 0
