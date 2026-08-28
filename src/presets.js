@@ -70,6 +70,11 @@ function buildPresets (cam) {
       [{ actionId: 'setColourTemp', options: { value: k } }],
       [{ feedbackId: 'propertyIs', options: { prop: String(P.COLOUR_TEMP), value: k }, style: { bgcolor: GREEN, color: WHITE } }]))
   }
+  add('offset_white_toggle', btn('White balance', 'Offset White toggle', 'OFFSET\\n$(sony-pxw:offset_white)', combineRgb(60, 60, 120),
+    [{ actionId: 'toggleProperty', options: { prop: String(P.OFFSET_WHITE) } }],
+    [{ feedbackId: 'propertyIs', options: { prop: String(P.OFFSET_WHITE), value: 2 }, style: { bgcolor: GREEN, color: WHITE } }]))
+  add('offset_plus', btn('White balance', 'Offset White +', 'OFFSET\\n+', combineRgb(60, 60, 120), [{ actionId: 'nudgeOffsetWhite', options: { delta: 1 } }]))
+  add('offset_minus', btn('White balance', 'Offset White -', 'OFFSET\\n-', combineRgb(60, 60, 120), [{ actionId: 'nudgeOffsetWhite', options: { delta: -1 } }]))
   add('wb_warmer', btn('White balance', 'Warmer 100K', 'WB\\n+100K', combineRgb(60, 60, 120), [{ actionId: 'nudgeColourTemp', options: { delta: 100 } }]))
   add('wb_cooler', btn('White balance', 'Cooler 100K', 'WB\\n-100K', combineRgb(60, 60, 120), [{ actionId: 'nudgeColourTemp', options: { delta: -100 } }]))
   add('wb_value', btn('White balance', 'Colour temp display', 'WB\\n$(sony-pxw:colour_temp)', GREY, []))
@@ -108,6 +113,16 @@ function buildPresets (cam) {
       [{ actionId: 'nudgeWbGain', options: { channel: ch, delta: d } }]))
   }
 
+  // --- ND filter (confirmed: on/off + variable density) ---
+  add('nd_on', btn('ND filter', 'ND on', 'ND\\nON', combineRgb(40, 40, 90),
+    [{ actionId: 'setNd', options: { state: 2 } }],
+    [{ feedbackId: 'propertyIs', options: { prop: String(0xd018), value: 2 }, style: { bgcolor: combineRgb(60, 60, 160), color: WHITE } }]))
+  add('nd_off', btn('ND filter', 'ND off (clear)', 'ND\\nCLEAR', GREY,
+    [{ actionId: 'setNd', options: { state: 1 } }]))
+  add('nd_status', btn('ND filter', 'ND display', 'ND\\n$(sony-pxw:nd_on) $(sony-pxw:nd_preset)', BLACK, []))
+  add('nd_denser', btn('ND filter', 'ND denser', 'ND\\n+', combineRgb(40, 40, 90), [{ actionId: 'stepNdVariable', options: { delta: 1 } }]))
+  add('nd_lighter', btn('ND filter', 'ND lighter', 'ND\\n-', combineRgb(40, 40, 90), [{ actionId: 'stepNdVariable', options: { delta: -1 } }]))
+
   // --- S&Q Motion (confirmed by eye: 0xD051, 2 = on, 1 = off) ---
   add('sq_on', btn('Record', 'S&Q Motion on', 'S&Q\\nON', combineRgb(120, 60, 0),
     [{ actionId: 'setProperty', options: { prop: String(0xd051), value: 2 } }],
@@ -120,6 +135,11 @@ function buildPresets (cam) {
   // surfaces during the routine and no control opcode triggers it).
   add('fb_prep', btn('Focus', 'Backfocus prep (iris open f/1.9)', 'FB PREP\\nf/1.9', combineRgb(0, 90, 40),
     [{ actionId: 'setIris', options: { value: 190 } }]))
+
+  // --- AI Auto Framing (confirmed: 0xD154 on/off, 0xD0CD tracking mode) ---
+  add('autoframe_toggle', btn('Focus', 'Auto Framing toggle', 'AUTO\\nFRAME\\n$(sony-pxw:auto_framing)', combineRgb(0, 70, 90),
+    [{ actionId: 'toggleProperty', options: { prop: String(P.AUTO_FRAMING) } }],
+    [{ feedbackId: 'propertyIs', options: { prop: String(P.AUTO_FRAMING), value: 2 }, style: { bgcolor: combineRgb(0, 130, 160), color: WHITE } }]))
 
   // --- AI focus (confirmed: cycle button + live state) ---
   add('ai_focus_cycle', btn('Focus', 'AI focus cycle', 'AI AF\\n$(sony-pxw:ai_focus)', combineRgb(90, 0, 90),

@@ -33,6 +33,15 @@ const P = {
   TINT:          0xd00d, // CONFIRMED i8 writable; drives the R/B gains below
   WB_R_GAIN:     0xd087, // CONFIRMED i16 writable, -990..990
   WB_B_GAIN:     0xd088, // CONFIRMED i16 writable, -990..990
+  // CONFIRMED writable: Offset White master (1 off, 2 on) and its amount
+  // (i8, -99..99). When on, the colour-temp/tint controls act as offsets.
+  OFFSET_WHITE:  0xd0a9,
+  OFFSET_AMOUNT: 0xd0aa,
+  // CONFIRMED writable: AI Auto Framing on/off (2 on, 1 off) and the tracking
+  // start mode (1/2/3). Crop level, tracking speed and HDMI crop are sub-
+  // parameters that do not surface in the property table.
+  AUTO_FRAMING:  0xd154,
+  TRACKING_MODE: 0xd0cd,
   // CONFIRMED by watching the zoom rocker: focal length readout, moves with
   // 0xD25D (zoom bar). Rejects writes - the rocker owns it.
   ZOOM:          0xd00b,
@@ -53,6 +62,14 @@ const P = {
   // coincidence): 2 = S&Q Motion on, 1 = off. Writable. The S&Q frame rate
   // 0xD286 stays read-only even while S&Q is engaged.
   SQ_MOTION:     0xd051,
+  // CONFIRMED writable: ND filter master on/off (1 off, 2 on).
+  ND_ON:         0xd018,
+  // CONFIRMED read-only: ND PRESET position (Clear/1/2/3) - owned by the
+  // physical ND FILTER POSITION up/down buttons.
+  ND_PRESET:     0xd019,
+  // CONFIRMED writable: variable ND density. u64 whose low 32 bits are a
+  // signed value; the set-list runs -4 (light) to +124 (dense), 0 = clear.
+  ND_VARIABLE:   0xd01b,
   // Subject Recognition AF current state (RO). Labels are string group 21:
   // 1 Off, 2 Human Only AF, 3 Human Priority AF. Cycle it with AI_AF_CYCLE;
   // the direct-select property 0xD07F refuses writes in every state tried.

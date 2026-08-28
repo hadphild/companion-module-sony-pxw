@@ -20,6 +20,9 @@ Verified live against a PXW-Z300 on firmware 1.08.
 | **Shutter angle** | write `0xD010` = 2 then `0xD00E` | Physical SHUTTER switch **ON** |
 | **S&Q Motion** on/off | write `0xD051` (2 on, 1 off) | Rate is menu-only, even engaged |
 | **AI focus** (Subject Recognition) | press `0xD2FF`; state at `0xD080` | Cycle only - direct select refused |
+| **ND filter** on/off + variable density | write `0xD018` / `0xD01B` | Preset position (`0xD019`) is button-owned, read-only |
+| **Offset White** on/off + amount | write `0xD0A9` / `0xD0AA` | Offset CT/tint reuse the colour-temp/tint controls |
+| **AI Auto Framing** on/off | write `0xD154` | Tracking start mode = `0xD0CD`; sub-params (crop/speed) not exposed |
 | **Zoom** variable speed | `0xD2DD` signed i8, ±1–8 | Hold to drive, release to stop |
 | **Colour temperature** | write `0xD20F` | WB switch must be on memory A/B |
 | **Tint** | write `0xD00D` | Recomputes the R/B gains |
@@ -37,10 +40,11 @@ per-property switch state.
 
 ### Confirmed absent from this interface
 
-Display assists - zebra, peaking, focus magnifier - produce no property
-changes at all; the monitoring layer is not exposed. Auto FB Adjust (backfocus)
-is menu-only: no execute property surfaces and no control opcode triggers it.
-Colour bars remain unidentified.
+Not exposed on this interface (no property moves when toggled): gain (L/M/H/
+Turbo), ATW (needs FULL AUTO, which locks out manual control anyway), zebra,
+peaking, focus magnifier, colour bars, the AWB one-shot, and the Auto Framing
+sub-parameters (crop level, tracking speed, HDMI crop, production effect).
+Auto FB Adjust (backfocus) is menu-only.
 
 ### Not controllable
 

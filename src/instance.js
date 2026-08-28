@@ -15,6 +15,9 @@ const VARS = [
   ['tint', 'Tint'], ['wb_switch', 'WB switch position'],
   ['wb_r_gain', 'WB red gain'], ['wb_b_gain', 'WB blue gain'],
   ['ai_focus', 'Subject Recognition AF mode'],
+  ['nd_on', 'ND filter on/off'], ['nd_preset', 'ND preset position'],
+  ['offset_white', 'Offset White on/off'], ['offset_amount', 'Offset White amount'],
+  ['auto_framing', 'AI Auto Framing on/off'], ['tracking_mode', 'Tracking start mode'],
   ['iris_state', 'Iris: camera-reported state (Off/Locked/Active)'],
   ['focus_state', 'Focus: camera-reported state'],
   ['wb_state', 'White balance: camera-reported state'],
@@ -79,6 +82,12 @@ class PxwInstance extends InstanceBase {
       wb_r_gain: String(this.pendingValue(P.WB_R_GAIN) ?? c.value(P.WB_R_GAIN) ?? '—'),
       wb_b_gain: String(this.pendingValue(P.WB_B_GAIN) ?? c.value(P.WB_B_GAIN) ?? '—'),
       ai_focus: c.strings?.[21]?.[c.value(P.AI_AF_STATE)] ?? String(c.value(P.AI_AF_STATE) ?? '—'),
+      nd_on: c.value(P.ND_ON) === 2 ? 'On' : c.value(P.ND_ON) === 1 ? 'Off' : '—',
+      nd_preset: ({ 3: 'Clear', 4: '1', 5: '2', 1: '3', 2: 'Auto' }[c.value(P.ND_PRESET)] ?? String(c.value(P.ND_PRESET) ?? '—')),
+      offset_white: c.value(P.OFFSET_WHITE) === 2 ? 'On' : c.value(P.OFFSET_WHITE) === 1 ? 'Off' : '—',
+      offset_amount: String(this.pendingValue(P.OFFSET_AMOUNT) ?? c.value(P.OFFSET_AMOUNT) ?? '—'),
+      auto_framing: c.value(P.AUTO_FRAMING) === 2 ? 'On' : c.value(P.AUTO_FRAMING) === 1 ? 'Off' : '—',
+      tracking_mode: String(c.value(P.TRACKING_MODE) ?? '—'),
       wb_switch: { 1: 'PRESET', 2: 'Memory A', 3: 'Memory B' }[c.value(P.WB_SWITCH)] ?? '—',
       iris_state: AVAILABILITY[c.availability(P.IRIS)],
       focus_state: AVAILABILITY[c.availability(P.FOCUS_M)],
@@ -251,6 +260,17 @@ class PxwInstance extends InstanceBase {
         options: [{ id: 'delta', type: 'number', label: 'Kelvin change', default: 100, min: -2000, max: 2000 }],
         callback: async ({ options }) => this.nudgeProp(P.COLOUR_TEMP, Number(options.delta), 2000, 15000),
       },
+      setOffsetWhite: {
+        name: 'Offset White on / off',
+        options: [{ id: 'state', type: 'dropdown', label: 'Offset White', default: 2,
+          choices: [{ id: 1, label: 'Off' }, { id: 2, label: 'On' }] }],
+        callback: async ({ options }) => this.guardedSet(P.OFFSET_WHITE, Number(options.state)),
+      },
+      nudgeOffsetWhite: {
+        name: 'Offset White: nudge amount',
+        options: [{ id: 'delta', type: 'number', label: 'Change (-99..99)', default: 1, min: -20, max: 20 }],
+        callback: async ({ options }) => this.nudgeProp(P.OFFSET_AMOUNT, Number(options.delta), -99, 99),
+      },
       setTint: {
         name: 'White balance: set tint',
         options: [{ id: 'value', type: 'number', label: 'Tint (-99 to 99)', default: 0, min: -99, max: 99 }],
@@ -270,6 +290,17 @@ class PxwInstance extends InstanceBase {
         ],
         callback: async ({ options }) => this.guardedSet(options.channel === 'r' ? P.WB_R_GAIN : P.WB_B_GAIN, Number(options.value)),
       },
+      setAutoFraming: {
+        name: 'AI Auto Framing on / off',
+        options: [{ id: 'state', type: 'dropdown', label: 'Auto Framing', default: 2,
+          choices: [{ id: 1, label: 'Off' }, { id: 2, label: 'On' }] }],
+        callback: async ({ options }) => this.guardedSet(P.AUTO_FRAMING, Number(options.state)),
+      },
+      setTrackingMode: {
+        name: 'Auto Framing: tracking start mode',
+        options: [{ id: 'mode', type: 'number', label: 'Mode (1-3)', default: 1, min: 1, max: 3 }],
+        callback: async ({ options }) => this.guardedSet(P.TRACKING_MODE, Number(options.mode)),
+      },
       aiFocusCycle: {
         name: 'AI focus: cycle mode (Off / Human Only / Human Priority)',
         options: [],
@@ -286,6 +317,24 @@ class PxwInstance extends InstanceBase {
           { id: 'delta', type: 'number', label: 'Change', default: 10, min: -200, max: 200 },
         ],
         callback: async ({ options }) => this.nudgeProp(options.channel === 'r' ? P.WB_R_GAIN : P.WB_B_GAIN, Number(options.delta), -990, 990),
+      },
+      setNd: {
+        name: 'ND filter on / off',
+        options: [{ id: 'state', type: 'dropdown', label: 'ND filter', default: 2,
+          choices: [{ id: 1, label: 'Off (Clear)' }, { id: 2, label: 'On' }] }],
+        callback: async ({ options }) => this.guardedSet(P.ND_ON, Number(options.state)),
+      },
+      stepNdVariable: {
+        name: 'ND variable: step density (encoder)',
+        options: [{ id: 'delta', type: 'number', label: 'Steps (+ denser, - lighter)', default: 1, min: -20, max: 20 }],
+        callback: async ({ options }) => {
+          const p = cam().get(P.ND_VARIABLE)
+          if (!p?.setValues?.length) return
+          let i = p.setValues.indexOf(p.current)
+          if (i < 0) i = 0
+          const next = p.setValues[Math.min(p.setValues.length - 1, Math.max(0, i + Number(options.delta)))]
+          await this.guardedSet(P.ND_VARIABLE, next)
+        },
       },
       setWbSwitch: {
         name: 'White balance: switch position',

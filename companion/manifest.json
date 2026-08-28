@@ -3,7 +3,7 @@
   "name": "sony-pxw",
   "shortname": "PXW",
   "description": "Sony PXW-Z300 / Z200 / HXR-NX800 camcorder control (Camera Remote Control over PTP-IP/SSH)",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "license": "MIT",
   "repository": "https://github.com/hadphild/companion-module-sony-pxw",
   "bugs": "https://github.com/hadphild/companion-module-sony-pxw/issues",
