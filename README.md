@@ -16,6 +16,7 @@ Verified live against a PXW-Z300 on firmware 1.08.
 | Feature | How | Notes |
 | --- | --- | --- |
 | **Record** start / stop / toggle | `0xD2C8` u16, 2 = start, 1 = stop | Needs a card in a slot |
+| **Iris** (f-stop) | write `0xD001` = 2 then `0x5007` | Physical IRIS switch on **AUTO** |
 | **Zoom** variable speed | `0xD2DD` signed i8, ±1–8 | Hold to drive, release to stop |
 | **Colour temperature** | write `0xD20F` | WB switch must be on memory A/B |
 | **Tint** | write `0xD00D` | Recomputes the R/B gains |
@@ -32,11 +33,10 @@ battery, recording state, and per-property switch state.
 
 ### Not controllable
 
-**Iris** (`0x5007`) and **shutter** (`0xD00E`) are readable but reject every
-write, in every switch combination tried, via both setter opcodes and a full
-sweep of the control-opcode list with signed and unsigned values. **Recording
-resolution** (`0xD024`) is likewise read-only. Gain/ISO and ND filter codes are
-not yet identified.
+**Shutter** (`0xD00E`) rejects writes so far - the physical SHUTTER switch was
+OFF during testing (360° = shutter off), so it is likely gated the same way iris
+was. **Recording resolution** (`0xD024`) is read-only. Gain/ISO and ND filter
+codes are not yet identified.
 
 ## Camera setup
 
@@ -148,29 +148,17 @@ is not worth the convenience.
 
 ## Not yet identified
 
-- **Iris and shutter.** Readable, but they reject every write.
+- **Iris: SOLVED.** The manual's recipe works over the network, in order:
+  physical IRIS switch to **AUTO** (on MANUAL the ring owns the iris and every
+  remote write is discarded - including writes to the mode property), then set
+  `0xD001` = 2 (Manual), then `0x5007` accepts f-numbers. The module's iris
+  actions do the mode-first step automatically. Earlier failures were writing
+  the value while the mode was still Auto, or with the switch on MANUAL.
 
-  The manual (*Adjusting the Iris*) states: *"To adjust the iris using the remote
-  control, set the IRIS switch to the AUTO position and set the iris to [Manual]
-  in the direct menu."* That configuration was set up and verified on the camera —
-  `0xD001` reads 2 (Manual) at `enable=2`, and becomes writable, which it is not
-  in any other switch position. Iris `0x5007` still refuses every write, and a
-  sweep of all advertised control opcodes in that state (signed and unsigned,
-  each followed by a stop) moved neither iris nor shutter.
-
-  The most likely reading is that the manual's "remote control" there means a
-  **LANC remote on the REMOTE connector**, not network control — the LANC page
-  separately says LANC "can control the functions of the unit remotely, such as
-  focus/iris/ND filter/zoom/white balance/shutter speed/gain". Those functions
-  appear to be exposed on the LANC path but not on this PTP interface.
-
-  Cyanview document IP control of iris on this body, so a route may exist via
-  Sony's Camera Remote SDK. Resolving it needs Sony's **Camera Remote Command**
-  specification (free, corporate registration).
-
-  Useful side effect: with the IRIS switch on AUTO, `0xD001` (iris Auto/Manual)
-  is writable, so the iris *mode* can be switched remotely even though the value
-  cannot.
+- **Shutter.** Untested in the unlocked state: needs the physical SHUTTER
+  switch ON first (360° reading = shutter off). Mode-property candidates
+  `0xD013` / `0xD01C` / `0xD010` / `0xD00C` are writable in the current
+  configuration; the value write test is pending the switch.
 
 - **Record.** `0xD2C8` (`MovieRecButtonHold`) is accepted but never observed to
   record. Both card slots reported 0 minutes remaining during testing, so this

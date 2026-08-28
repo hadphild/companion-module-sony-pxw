@@ -4,8 +4,13 @@
 // the rest of the 183 reported properties are still unidentified.
 
 const P = {
-  IRIS:          0x5007, // CONFIRMED u16, f-number x100 (800 = f/8.0)
-  IRIS_MODE_SETTING: 0xd001, // CONFIRMED present; did not move when the iris switch was flipped
+  // CONFIRMED WRITABLE with the documented recipe: physical IRIS switch on
+  // AUTO, then write IRIS_MODE_SETTING = 2 (Manual), then values stick.
+  // With the IRIS switch on MANUAL the ring owns it and writes are discarded.
+  IRIS:          0x5007, // u16, f-number x100 (800 = f/8.0)
+  // CONFIRMED: the direct-menu iris Auto(1)/Manual(2). Writable ONLY while the
+  // physical IRIS switch is on AUTO - the gate for remote iris control.
+  IRIS_MODE_SETTING: 0xd001,
   // Went 1 -> 2 at the moment the iris switch was set to manual, mirroring the
   // confirmed FOCUS_MODE behaviour exactly. Treated as the iris auto/manual state.
   IRIS_MODE:     0xd073,

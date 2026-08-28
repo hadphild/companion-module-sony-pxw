@@ -81,6 +81,14 @@ class PxwInstance extends InstanceBase {
     })
   }
 
+  /** Remote iris needs the direct-menu iris mode on Manual (and the physical
+   *  IRIS switch on AUTO - only then is the mode property writable at all). */
+  async ensureIrisManual () {
+    if (this.cam.value(P.IRIS_MODE_SETTING) === 2) return
+    await this.cam.setProp(P.IRIS_MODE_SETTING, 2)
+    await new Promise(r => setTimeout(r, 800))
+  }
+
   /** Warn once when the camera silently ignores a write — the usual cause is
    *  [Network] > Wired LAN > Camera Remote Control being set to Disable. */
   async guardedSet (code, value) {
@@ -112,12 +120,23 @@ class PxwInstance extends InstanceBase {
       setIris: {
         name: 'Iris: set f-stop',
         options: [{ id: 'value', type: 'number', label: 'f-number x100 (800 = f/8.0)', default: 560, min: 100, max: 3200 }],
-        callback: async ({ options }) => this.guardedSet(P.IRIS, Number(options.value)),
+        callback: async ({ options }) => {
+          await this.ensureIrisManual()
+          await this.guardedSet(P.IRIS, Number(options.value))
+        },
       },
       stepIris: {
         name: 'Iris: step',
         options: [{ id: 'delta', type: 'number', label: 'Steps (negative opens up)', default: 1, min: -10, max: 10 }],
-        callback: async ({ options }) => { try { await cam().step(P.IRIS, Number(options.delta)) } catch (e) { this.log('error', e.message) } },
+        callback: async ({ options }) => {
+          try { await this.ensureIrisManual(); await cam().step(P.IRIS, Number(options.delta)) } catch (e) { this.log('error', e.message) }
+        },
+      },
+      setIrisMode: {
+        name: 'Iris: auto / manual',
+        options: [{ id: 'mode', type: 'dropdown', label: 'Mode', default: 2,
+          choices: [{ id: 1, label: 'Auto' }, { id: 2, label: 'Manual' }] }],
+        callback: async ({ options }) => this.guardedSet(P.IRIS_MODE_SETTING, Number(options.mode)),
       },
       setShutterAngle: {
         name: 'Shutter: set angle',
