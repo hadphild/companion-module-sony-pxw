@@ -148,14 +148,30 @@ is not worth the convenience.
 
 ## Not yet identified
 
-- **Iris and shutter.** Still refused by every route tried, in all switch
-  positions including FULL AUTO off with both switches manual, and by sweeping
-  the whole control-opcode list with signed and unsigned values. Cyanview report controlling iris, gain, shutter, ND and
-  colour temperature on this body, so a mechanism exists, but it is not any of
-  `SDIO_SetExtDevicePropValue` / `SDIO_ControlDevice` against these property
-  codes, nor any of the 25 advertised control opcodes. `SDIO_GetControlDeviceDesc`
-  returns empty for every control. Resolving this most likely needs Sony's
-  **Camera Remote Command** specification (free, corporate registration).
+- **Iris and shutter.** Readable, but they reject every write.
+
+  The manual (*Adjusting the Iris*) states: *"To adjust the iris using the remote
+  control, set the IRIS switch to the AUTO position and set the iris to [Manual]
+  in the direct menu."* That configuration was set up and verified on the camera —
+  `0xD001` reads 2 (Manual) at `enable=2`, and becomes writable, which it is not
+  in any other switch position. Iris `0x5007` still refuses every write, and a
+  sweep of all advertised control opcodes in that state (signed and unsigned,
+  each followed by a stop) moved neither iris nor shutter.
+
+  The most likely reading is that the manual's "remote control" there means a
+  **LANC remote on the REMOTE connector**, not network control — the LANC page
+  separately says LANC "can control the functions of the unit remotely, such as
+  focus/iris/ND filter/zoom/white balance/shutter speed/gain". Those functions
+  appear to be exposed on the LANC path but not on this PTP interface.
+
+  Cyanview document IP control of iris on this body, so a route may exist via
+  Sony's Camera Remote SDK. Resolving it needs Sony's **Camera Remote Command**
+  specification (free, corporate registration).
+
+  Useful side effect: with the IRIS switch on AUTO, `0xD001` (iris Auto/Manual)
+  is writable, so the iris *mode* can be switched remotely even though the value
+  cannot.
+
 - **Record.** `0xD2C8` (`MovieRecButtonHold`) is accepted but never observed to
   record. Both card slots reported 0 minutes remaining during testing, so this
   may simply have been a no-media condition and is worth retesting with a card in.
