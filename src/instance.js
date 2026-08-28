@@ -377,15 +377,6 @@ class PxwInstance extends InstanceBase {
         options: [],
         callback: async () => cam().control(C.ZOOM_OP, 0, 1),
       },
-      pressControl: {
-        name: 'Press a control opcode (2 then 1, like a button push) - for identification',
-        options: [{ id: 'code', type: 'textinput', label: 'Control opcode (decimal)', default: '' }],
-        callback: async ({ options }) => {
-          const code = Number(options.code)
-          await cam().control(code, 2)
-          setTimeout(() => cam().control(code, 1).catch(() => {}), 300)
-        },
-      },
       sendKey: {
         name: 'Send a key / control opcode',
         options: [
@@ -472,9 +463,9 @@ class PxwInstance extends InstanceBase {
           '<b>Record</b> needs a card in a slot — with none, the camera accepts the command and ignores it.<br>' +
           '<b>White balance</b> (colour temp, tint, R/B gain) only responds while the WB switch is on ' +
           'memory <b>A</b> or <b>B</b>. On PRESET the camera silently discards the change.<br>' +
-          '<b>FULL AUTO</b> overrides the individual switches — turn it off for manual control.<br>' +
-          '<b>Iris and shutter</b> cannot currently be set remotely on this body; they are reported ' +
-          'as variables only.',
+          '<b>Iris</b> needs the physical IRIS switch on <b>AUTO</b>; <b>shutter</b> needs the ' +
+          'SHUTTER switch <b>ON</b>. The actions set the direct-menu mode to Manual automatically.<br>' +
+          '<b>FULL AUTO</b> overrides the individual switches — turn it off for manual control.',
       },
     ]
   }
