@@ -88,3 +88,19 @@ Flipping the iris and focus switches to manual moved:
 
 Direct-select of AI AF via 0xD07F refuses writes in every state tried,
 including FOCUS switch AUTO; the cycle button is the working mechanism.
+
+## Multi-camera Companion config
+
+tools/make-cc1-config.js builds z300-cc1.companionconfig. For one camera it uses
+CAM / CAM_PASS. For several, pass CAMS as a JSON array:
+
+    CAMS='[{"label":"CAM1","host":"192.168.0.10","pass":"pw1"},
+           {"label":"CAM2","host":"192.168.0.11","pass":"pw2"}]' \
+      node tools/make-cc1-config.js
+
+Each camera gets its own connection, a live page, and a full set of preset
+pages. The < / > buttons on every page move to the previous/next page, and when
+the destination is a camera live page they also set the `selected_camera`
+custom variable. One fader trigger per camera is gated on that variable, so the
+physical CC121MK2 fader drives only the camera you are currently looking at, and
+every tile on the live page reads that camera's values.
