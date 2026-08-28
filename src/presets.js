@@ -102,6 +102,38 @@ function buildPresets (cam) {
       [{ feedbackId: 'propertyIs', options: { prop: String(P.WB_SWITCH), value: v }, style: { bgcolor: GREEN, color: WHITE } }]))
   }
 
+  // --- WB gain nudges ---
+  for (const [ch, lbl, d] of [['r','R+',10],['r','R-',-10],['b','B+',10],['b','B-',-10]]) {
+    add(`wb_gain_${lbl.replace('+','p').replace('-','m')}`, btn('White balance', `WB gain ${lbl}`, `WB\\n${lbl}10`, combineRgb(60, 60, 120),
+      [{ actionId: 'nudgeWbGain', options: { channel: ch, delta: d } }]))
+  }
+
+  // --- S&Q Motion (confirmed by eye: 0xD051, 2 = on, 1 = off) ---
+  add('sq_on', btn('Record', 'S&Q Motion on', 'S&Q\\nON', combineRgb(120, 60, 0),
+    [{ actionId: 'setProperty', options: { prop: String(0xd051), value: 2 } }],
+    [{ feedbackId: 'propertyIs', options: { prop: String(0xd051), value: 2 }, style: { bgcolor: combineRgb(200, 120, 0), color: BLACK } }]))
+  add('sq_off', btn('Record', 'S&Q Motion off', 'S&Q\\nOFF', GREY,
+    [{ actionId: 'setProperty', options: { prop: String(0xd051), value: 1 } }]))
+
+  // --- Backfocus prep: what the FB procedure needs that IS remotely settable.
+  // The [Auto FB Adjust] Execute itself is menu-only (verified: no property
+  // surfaces during the routine and no control opcode triggers it).
+  add('fb_prep', btn('Focus', 'Backfocus prep (iris open f/1.9)', 'FB PREP\\nf/1.9', combineRgb(0, 90, 40),
+    [{ actionId: 'setIris', options: { value: 190 } }]))
+
+  // --- AI focus (confirmed: cycle button + live state) ---
+  add('ai_focus_cycle', btn('Focus', 'AI focus cycle', 'AI AF\\n$(sony-pxw:ai_focus)', combineRgb(90, 0, 90),
+    [{ actionId: 'aiFocusCycle', options: {} }]))
+
+  // --- Unidentified control opcodes (eyes-on identification) ---
+  // The manual's action features (Color Bars, Rec Review, Focus Magnifier,
+  // Shot Marks, Clip Flags, Digital Extender, Stream) are most likely these.
+  // Press while watching the LCD/output and note which button does what.
+  for (const op of [0xd2e7, 0xd2f8, 0xd2f9, 0xf000, 0xf001, 0xf005, 0xf010, 0xd307, 0xd309, 0xd30a]) {
+    add(`op_${op.toString(16)}`, btn('Ops (test)', `Opcode 0x${op.toString(16)}`, `${op.toString(16).toUpperCase()}`, combineRgb(80, 40, 0),
+      [{ actionId: 'pressControl', options: { code: String(op) } }]))
+  }
+
   // --- Menu navigation ------------------------------------------------------
   const keys = [['UP', C.KEY_UP], ['DOWN', C.KEY_DOWN], ['LEFT', C.KEY_LEFT], ['RIGHT', C.KEY_RIGHT]]
   for (const [label, code] of keys) {

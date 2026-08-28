@@ -49,6 +49,14 @@ const P = {
   // CONFIRMED: reads 1 when idle and 0 for exactly the duration of a recording.
   // 0xD292 / 0xD08B / 0xD08C / 0xD08D track it identically.
   REC_STATE:     0xd279,
+  // CONFIRMED BY EYE (first pinned as colour bars - wrong; a menu-session
+  // coincidence): 2 = S&Q Motion on, 1 = off. Writable. The S&Q frame rate
+  // 0xD286 stays read-only even while S&Q is engaged.
+  SQ_MOTION:     0xd051,
+  // Subject Recognition AF current state (RO). Labels are string group 21:
+  // 1 Off, 2 Human Only AF, 3 Human Priority AF. Cycle it with AI_AF_CYCLE;
+  // the direct-select property 0xD07F refuses writes in every state tried.
+  AI_AF_STATE:   0xd080,
 }
 
 // SDIO_ControlDevice opcodes. 0xD2E2 is FormatMediaCard and is deliberately
@@ -65,6 +73,9 @@ const C = {
   KEY_RIGHT:  0xd2d0,
   TOUCH:      0xd2e4, // CONFIRMED — drives touch-to-focus
   TOUCH_STOP: 0xd2e5,
+  // CONFIRMED by three-state sweeps with property diffing:
+  REC_TOGGLE:  0xd2fe, // press (2 then 1) toggles recording - alternative to MOVIE_REC
+  AI_AF_CYCLE: 0xd2ff, // press cycles Subject Recognition AF; state reads from 0xD080
   // Continuous adjusters found by sweeping the control list. They read the
   // value as UNSIGNED magnitude (i8 -1 arrives as 255 and ramps hard), so they
   // only drive one way and need a 0 to stop. Writing the property directly is

@@ -18,6 +18,8 @@ Verified live against a PXW-Z300 on firmware 1.08.
 | **Record** start / stop / toggle | `0xD2C8` u16, 2 = start, 1 = stop | Needs a card in a slot |
 | **Iris** (f-stop) | write `0xD001` = 2 then `0x5007` | Physical IRIS switch on **AUTO** |
 | **Shutter angle** | write `0xD010` = 2 then `0xD00E` | Physical SHUTTER switch **ON** |
+| **S&Q Motion** on/off | write `0xD051` (2 on, 1 off) | Rate is menu-only, even engaged |
+| **AI focus** (Subject Recognition) | press `0xD2FF`; state at `0xD080` | Cycle only - direct select refused |
 | **Zoom** variable speed | `0xD2DD` signed i8, ±1–8 | Hold to drive, release to stop |
 | **Colour temperature** | write `0xD20F` | WB switch must be on memory A/B |
 | **Tint** | write `0xD00D` | Recomputes the R/B gains |
@@ -28,9 +30,17 @@ Verified live against a PXW-Z300 on firmware 1.08.
 
 ### Monitoring
 
-Iris, shutter angle, colour temperature, tint, focus distance, focus mode, zoom
-position, WB switch position, both card slots (status and remaining time),
-battery, recording state, and per-property switch state.
+Iris, shutter angle, colour temperature, tint, WB R/B gains, focus distance,
+focus mode, zoom position, WB switch position, Subject Recognition AF mode,
+both card slots (status and remaining time), battery, recording state, and
+per-property switch state.
+
+### Confirmed absent from this interface
+
+Display assists - zebra, peaking, focus magnifier - produce no property
+changes at all; the monitoring layer is not exposed. Auto FB Adjust (backfocus)
+is menu-only: no execute property surfaces and no control opcode triggers it.
+Colour bars remain unidentified.
 
 ### Not controllable
 

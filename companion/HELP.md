@@ -44,8 +44,20 @@ presets drive on press and stop on release. *Zoom stop* halts it explicitly.
 red/blue gain (−990…990), and the switch position (PRESET / memory A / memory B).
 Tint recomputes the gains, so set gains first and tint last.
 
-**Iris / shutter** — present, but the camera currently refuses these writes on
-the Z300. They remain available as variables.
+**Iris** — set f-stop, step, or drive from a fader percent (0-100). Needs the
+physical IRIS switch on AUTO; the actions set the direct-menu mode to Manual
+automatically.
+
+**Shutter** — set angle. Needs the physical SHUTTER switch ON; the mode is set
+to Manual automatically.
+
+**S&Q Motion** — on/off (the frame rate itself is menu-only).
+
+**AI focus** — cycles Subject Recognition AF (Off / Human Only / Human
+Priority); the current mode is shown by the `ai_focus` variable.
+
+**White balance nudges** — R/B gain, tint and colour temperature encoder
+actions accumulate locally and coalesce writes, so encoders feel immediate.
 
 **Set any property / Send a key** — advanced escape hatches for experimenting
 with property and control codes by number.

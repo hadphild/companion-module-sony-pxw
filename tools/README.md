@@ -74,3 +74,17 @@ Flipping the iris and focus switches to manual moved:
     0xD091  1 -> 0
     0xD019  3 -> 5
     0xD01B  4294967300 -> 0
+
+## Control opcodes identified by state-sweep (2026-08-28)
+
+    0xD2FE  Record toggle (press 2-then-1; starts when idle, stops when recording)
+    0xD2FF  Subject Recognition AF cycle (press cycles; STATE reads from 0xD080,
+            labels = string group 21: 1 Off, 2 Human Only AF, 3 Human Priority AF)
+    0xD2F9  While recording flipped 0xD122 1->2 once - clip flag / shot mark
+            suspect, not yet confirmed
+    0xD03E  RO live readout that drifts on its own; a rolling-base diff once
+            attributed its movement to 0xF000/F001 - false positive, since
+            retracted. Sweep lesson: re-test any single-occurrence hit.
+
+Direct-select of AI AF via 0xD07F refuses writes in every state tried,
+including FOCUS switch AUTO; the cycle button is the working mechanism.

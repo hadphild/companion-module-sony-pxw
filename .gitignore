@@ -4,3 +4,4 @@ pkg/
 .DS_Store
 pkg/
 *.tgz
+z300-cc1.companionconfig

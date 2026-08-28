@@ -13,6 +13,8 @@ const VARS = [
   ['slot2_status', 'Slot 2 status'], ['slot2_time', 'Slot 2 remaining'],
   ['recording', 'Recording (Yes/No)'],
   ['tint', 'Tint'], ['wb_switch', 'WB switch position'],
+  ['wb_r_gain', 'WB red gain'], ['wb_b_gain', 'WB blue gain'],
+  ['ai_focus', 'Subject Recognition AF mode'],
   ['iris_state', 'Iris: camera-reported state (Off/Locked/Active)'],
   ['focus_state', 'Focus: camera-reported state'],
   ['wb_state', 'White balance: camera-reported state'],
@@ -62,7 +64,7 @@ class PxwInstance extends InstanceBase {
       iris: fmt.iris(c.value(P.IRIS)),
       iris_mode: fmt.onOff(c.value(P.IRIS_MODE)),
       shutter_angle: fmt.angle(c.value(P.SHUTTER_ANGLE)),
-      colour_temp: fmt.kelvin(c.value(P.COLOUR_TEMP)),
+      colour_temp: fmt.kelvin(this.pendingValue(P.COLOUR_TEMP) ?? c.value(P.COLOUR_TEMP)),
       focus_distance: unit === 'feet' ? fmt.feet(c.value(P.FOCUS_FT)) : fmt.metres(c.value(P.FOCUS_M)),
       focus_mode: fmt.onOff(c.value(P.FOCUS_MODE)),
       focus_unit: unit === 'feet' ? 'ft' : 'm',
@@ -73,12 +75,65 @@ class PxwInstance extends InstanceBase {
       slot2_status: fmt.slot(c.value(P.SLOT2_STATUS)),
       slot2_time: fmt.minutes(c.value(P.SLOT2_TIME)),
       recording: c.value(P.REC_STATE) === 0 ? 'Yes' : 'No',
-      tint: String(c.value(P.TINT) ?? '—'),
+      tint: String(this.pendingValue(P.TINT) ?? c.value(P.TINT) ?? '—'),
+      wb_r_gain: String(this.pendingValue(P.WB_R_GAIN) ?? c.value(P.WB_R_GAIN) ?? '—'),
+      wb_b_gain: String(this.pendingValue(P.WB_B_GAIN) ?? c.value(P.WB_B_GAIN) ?? '—'),
+      ai_focus: c.strings?.[21]?.[c.value(P.AI_AF_STATE)] ?? String(c.value(P.AI_AF_STATE) ?? '—'),
       wb_switch: { 1: 'PRESET', 2: 'Memory A', 3: 'Memory B' }[c.value(P.WB_SWITCH)] ?? '—',
       iris_state: AVAILABILITY[c.availability(P.IRIS)],
       focus_state: AVAILABILITY[c.availability(P.FOCUS_M)],
       wb_state: AVAILABILITY[c.availability(P.COLOUR_TEMP)],
     })
+  }
+
+  /** RCP-style nudge: accumulate on a local shadow target so rapid encoder
+   *  ticks never read a stale polled value (which loses ticks), write
+   *  coalesced (only the latest target once the in-flight PTP op finishes),
+   *  and display the target optimistically until the poll catches up. */
+  async nudgeProp (prop, delta, min, max) {
+    this._nudge = this._nudge || {}
+    const n = this._nudge[prop] = this._nudge[prop] || {}
+    const live = n.busy || Date.now() < (n.hold || 0)
+    const base = live ? n.target : this.cam.value(prop)
+    if (base === undefined) return
+    n.target = Math.min(max, Math.max(min, base + delta))
+    n.hold = Date.now() + 1500
+    this.updateVariables()                      // optimistic display
+    if (n.busy) return
+    n.busy = true
+    try {
+      let sent
+      while (sent !== n.target) { sent = n.target; await this.cam.setProp(prop, sent) }
+    } catch (e) { this.log('error', `nudge 0x${prop.toString(16)}: ${e.message}`) } finally { n.busy = false }
+  }
+
+  /** Encoder-driven zoom: each tick (re)drives the lens and re-arms a stop
+   *  timer, so turning feels like a rocker - spin faster to zoom faster, stop
+   *  turning and the lens stops. Sends coalesce like the property nudges. */
+  zoomNudge (direction, base) {
+    const now = Date.now()
+    this._zoomTicks = (this._zoomTicks || []).filter(t => now - t < 500)
+    this._zoomTicks.push(now)
+    const speed = Math.min(8, Number(base) + Math.floor(this._zoomTicks.length / 3))
+    this._zoomWant = direction * speed
+    clearTimeout(this._zoomStopTimer)
+    this._zoomStopTimer = setTimeout(() => { this._zoomWant = 0; this._zoomPump() }, 300)
+    this._zoomPump()
+  }
+
+  async _zoomPump () {
+    if (this._zoomBusy) return
+    this._zoomBusy = true
+    try {
+      let sent
+      while (sent !== this._zoomWant) { sent = this._zoomWant; await this.cam.control(C.ZOOM_OP, sent, 1) }
+    } catch (e) { this.log('error', `zoom: ${e.message}`) } finally { this._zoomBusy = false }
+  }
+
+  /** The optimistic value while a nudge is in flight, else undefined. */
+  pendingValue (prop) {
+    const n = this._nudge?.[prop]
+    return n && (n.busy || Date.now() < (n.hold || 0)) ? n.target : undefined
   }
 
   /** Remote iris needs the direct-menu iris mode on Manual (and the physical
@@ -140,6 +195,32 @@ class PxwInstance extends InstanceBase {
           try { await this.ensureIrisManual(); await cam().step(P.IRIS, Number(options.delta)) } catch (e) { this.log('error', e.message) }
         },
       },
+      setIrisPercent: {
+        name: 'Iris: set from percent (fader)',
+        options: [{ id: 'percent', type: 'textinput', label: 'Percent 0-100 (100 = wide open); variables allowed', default: '50', useVariables: true }],
+        // Maps percent onto the f-stop list the camera reports. Coalesces
+        // bursts: a moving fader fires many events, but only the latest
+        // target is sent once the in-flight PTP write finishes.
+        callback: async (event, context) => {
+          const txt = await context.parseVariablesInString(String(event.options.percent))
+          const pct = Math.max(0, Math.min(100, parseFloat(txt)))
+          if (isNaN(pct)) return
+          const p = cam().get(P.IRIS)
+          const stops = (p?.setValues || []).filter(v => v < 4000).sort((a, b) => a - b)
+          if (!stops.length) return
+          this._faderTarget = stops[Math.round((1 - pct / 100) * (stops.length - 1))]
+          if (this._faderBusy) return
+          this._faderBusy = true
+          try {
+            await this.ensureIrisManual()
+            while (this._faderSent !== this._faderTarget) {
+              const t = this._faderTarget
+              await cam().setProp(P.IRIS, t)
+              this._faderSent = t
+            }
+          } catch (e) { this.log('error', `iris fader: ${e.message}`) } finally { this._faderBusy = false }
+        },
+      },
       setIrisMode: {
         name: 'Iris: auto / manual',
         options: [{ id: 'mode', type: 'dropdown', label: 'Mode', default: 2,
@@ -168,18 +249,17 @@ class PxwInstance extends InstanceBase {
       nudgeColourTemp: {
         name: 'White balance: nudge colour temperature',
         options: [{ id: 'delta', type: 'number', label: 'Kelvin change', default: 100, min: -2000, max: 2000 }],
-        callback: async ({ options }) => {
-          const cur = cam().value(P.COLOUR_TEMP)
-          if (cur === undefined) return
-          const p = cam().get(P.COLOUR_TEMP)
-          const next = Math.min(p.max ?? 15000, Math.max(p.min ?? 2000, cur + Number(options.delta)))
-          await this.guardedSet(P.COLOUR_TEMP, next)
-        },
+        callback: async ({ options }) => this.nudgeProp(P.COLOUR_TEMP, Number(options.delta), 2000, 15000),
       },
       setTint: {
         name: 'White balance: set tint',
         options: [{ id: 'value', type: 'number', label: 'Tint (-99 to 99)', default: 0, min: -99, max: 99 }],
         callback: async ({ options }) => this.guardedSet(P.TINT, Number(options.value)),
+      },
+      nudgeTint: {
+        name: 'White balance: nudge tint',
+        options: [{ id: 'delta', type: 'number', label: 'Change', default: 5, min: -50, max: 50 }],
+        callback: async ({ options }) => this.nudgeProp(P.TINT, Number(options.delta), -99, 99),
       },
       setWbGain: {
         name: 'White balance: set R/B gain',
@@ -189,6 +269,23 @@ class PxwInstance extends InstanceBase {
           { id: 'value', type: 'number', label: 'Gain (-990 to 990)', default: 0, min: -990, max: 990 },
         ],
         callback: async ({ options }) => this.guardedSet(options.channel === 'r' ? P.WB_R_GAIN : P.WB_B_GAIN, Number(options.value)),
+      },
+      aiFocusCycle: {
+        name: 'AI focus: cycle mode (Off / Human Only / Human Priority)',
+        options: [],
+        callback: async () => {
+          await cam().control(C.AI_AF_CYCLE, 2)
+          setTimeout(() => cam().control(C.AI_AF_CYCLE, 1).catch(() => {}), 300)
+        },
+      },
+      nudgeWbGain: {
+        name: 'White balance: nudge R/B gain',
+        options: [
+          { id: 'channel', type: 'dropdown', label: 'Channel', default: 'r',
+            choices: [{ id: 'r', label: 'Red' }, { id: 'b', label: 'Blue' }] },
+          { id: 'delta', type: 'number', label: 'Change', default: 10, min: -200, max: 200 },
+        ],
+        callback: async ({ options }) => this.nudgeProp(options.channel === 'r' ? P.WB_R_GAIN : P.WB_B_GAIN, Number(options.delta), -990, 990),
       },
       setWbSwitch: {
         name: 'White balance: switch position',
@@ -217,10 +314,28 @@ class PxwInstance extends InstanceBase {
         // i8: sign is direction, magnitude is speed.
         callback: async ({ options }) => cam().control(C.ZOOM_OP, Number(options.direction) * Number(options.speed), 1),
       },
+      zoomNudge: {
+        name: 'Zoom: encoder tick (auto-stops when turning stops)',
+        options: [
+          { id: 'direction', type: 'dropdown', label: 'Direction', default: 1,
+            choices: [{ id: 1, label: 'Tele (in)' }, { id: -1, label: 'Wide (out)' }] },
+          { id: 'speed', type: 'number', label: 'Base speed (accelerates as you spin faster)', default: 2, min: 1, max: 8 },
+        ],
+        callback: async ({ options }) => this.zoomNudge(Number(options.direction), Number(options.speed)),
+      },
       zoomStop: {
         name: 'Zoom stop',
         options: [],
         callback: async () => cam().control(C.ZOOM_OP, 0, 1),
+      },
+      pressControl: {
+        name: 'Press a control opcode (2 then 1, like a button push) - for identification',
+        options: [{ id: 'code', type: 'textinput', label: 'Control opcode (decimal)', default: '' }],
+        callback: async ({ options }) => {
+          const code = Number(options.code)
+          await cam().control(code, 2)
+          setTimeout(() => cam().control(code, 1).catch(() => {}), 300)
+        },
       },
       sendKey: {
         name: 'Send a key / control opcode',
