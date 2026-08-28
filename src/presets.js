@@ -145,12 +145,6 @@ function buildPresets (cam) {
   add('ai_focus_cycle', btn('Focus', 'AI focus cycle', 'AI AF\\n$(sony-pxw:ai_focus)', combineRgb(90, 0, 90),
     [{ actionId: 'aiFocusCycle', options: {} }]))
 
-  // --- Menu navigation ------------------------------------------------------
-  const keys = [['UP', C.KEY_UP], ['DOWN', C.KEY_DOWN], ['LEFT', C.KEY_LEFT], ['RIGHT', C.KEY_RIGHT]]
-  for (const [label, code] of keys) {
-    add(`key_${label.toLowerCase()}`, btn('Menu', `Key ${label}`, label, GREY, [{ actionId: 'sendKey', options: { code: String(code), value: 1 } }]))
-  }
-
   // --- Status ---------------------------------------------------------------
   add('status_model', btn('Status', 'Model', '$(sony-pxw:model)', BLACK, [], [], '12'))
   add('status_battery', btn('Status', 'Battery', 'BATT\\n$(sony-pxw:battery)', BLACK, []))

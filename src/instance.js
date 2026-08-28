@@ -377,10 +377,14 @@ class PxwInstance extends InstanceBase {
         options: [],
         callback: async () => cam().control(C.ZOOM_OP, 0, 1),
       },
-      sendKey: {
-        name: 'Send a key / control opcode',
+      sendControl: {
+        // Raw control-opcode escape hatch. Menu-navigation opcodes (RemoteKey
+        // Up 0xD2CD / Down 0xD2CE / Left 0xD2CF / Right 0xD2D0 = 53453..53456)
+        // are reachable here but did NOT drive the Z300's menus reliably in
+        // testing, so they are not shipped as presets.
+        name: 'Send raw control opcode (advanced)',
         options: [
-          { id: 'code', type: 'textinput', label: 'Control opcode (decimal)', default: String(C.KEY_UP) },
+          { id: 'code', type: 'textinput', label: 'Control opcode (decimal)', default: '' },
           { id: 'value', type: 'number', label: 'Value', default: 1, min: 0, max: 65535 },
         ],
         callback: async ({ options }) => cam().control(Number(options.code), Number(options.value)),
