@@ -17,6 +17,7 @@ Verified live against a PXW-Z300 on firmware 1.08.
 | --- | --- | --- |
 | **Record** start / stop / toggle | `0xD2C8` u16, 2 = start, 1 = stop | Needs a card in a slot |
 | **Iris** (f-stop) | write `0xD001` = 2 then `0x5007` | Physical IRIS switch on **AUTO** |
+| **Shutter angle** | write `0xD010` = 2 then `0xD00E` | Physical SHUTTER switch **ON** |
 | **Zoom** variable speed | `0xD2DD` signed i8, ±1–8 | Hold to drive, release to stop |
 | **Colour temperature** | write `0xD20F` | WB switch must be on memory A/B |
 | **Tint** | write `0xD00D` | Recomputes the R/B gains |
@@ -33,10 +34,8 @@ battery, recording state, and per-property switch state.
 
 ### Not controllable
 
-**Shutter** (`0xD00E`) rejects writes so far - the physical SHUTTER switch was
-OFF during testing (360° = shutter off), so it is likely gated the same way iris
-was. **Recording resolution** (`0xD024`) is read-only. Gain/ISO and ND filter
-codes are not yet identified.
+**Recording resolution** (`0xD024`) is read-only. Gain/ISO and ND filter codes
+are not yet identified.
 
 ## Camera setup
 
@@ -155,10 +154,10 @@ is not worth the convenience.
   actions do the mode-first step automatically. Earlier failures were writing
   the value while the mode was still Auto, or with the switch on MANUAL.
 
-- **Shutter.** Untested in the unlocked state: needs the physical SHUTTER
-  switch ON first (360° reading = shutter off). Mode-property candidates
-  `0xD013` / `0xD01C` / `0xD010` / `0xD00C` are writable in the current
-  configuration; the value write test is pending the switch.
+- **Shutter: SOLVED.** Identical recipe to iris: physical SHUTTER switch ON,
+  then `0xD010` = 2 (Manual), then `0xD00E` accepts angles (verified 90°-300°
+  with readback). The module's shutter action does the mode-first step
+  automatically.
 
 - **Record.** `0xD2C8` (`MovieRecButtonHold`) is accepted but never observed to
   record. Both card slots reported 0 minutes remaining during testing, so this

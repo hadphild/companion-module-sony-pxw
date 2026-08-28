@@ -89,6 +89,14 @@ class PxwInstance extends InstanceBase {
     await new Promise(r => setTimeout(r, 800))
   }
 
+  /** Same gate as iris: shutter values only stick with the mode on Manual
+   *  (and the physical SHUTTER switch ON). */
+  async ensureShutterManual () {
+    if (this.cam.value(P.SHUTTER_MODE) === 2) return
+    await this.cam.setProp(P.SHUTTER_MODE, 2)
+    await new Promise(r => setTimeout(r, 800))
+  }
+
   /** Warn once when the camera silently ignores a write — the usual cause is
    *  [Network] > Wired LAN > Camera Remote Control being set to Disable. */
   async guardedSet (code, value) {
@@ -141,7 +149,16 @@ class PxwInstance extends InstanceBase {
       setShutterAngle: {
         name: 'Shutter: set angle',
         options: [{ id: 'value', type: 'number', label: 'Degrees x1000 (180000 = 180°)', default: 180000, min: 1000, max: 360000 }],
-        callback: async ({ options }) => this.guardedSet(P.SHUTTER_ANGLE, Number(options.value)),
+        callback: async ({ options }) => {
+          await this.ensureShutterManual()
+          await this.guardedSet(P.SHUTTER_ANGLE, Number(options.value))
+        },
+      },
+      setShutterMode: {
+        name: 'Shutter: auto / manual',
+        options: [{ id: 'mode', type: 'dropdown', label: 'Mode', default: 2,
+          choices: [{ id: 1, label: 'Auto' }, { id: 2, label: 'Manual' }] }],
+        callback: async ({ options }) => this.guardedSet(P.SHUTTER_MODE, Number(options.mode)),
       },
       setColourTemp: {
         name: 'White balance: set colour temperature',

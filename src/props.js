@@ -18,7 +18,11 @@ const P = {
   FOCUS_FT:      0xd005, // CONFIRMED u32, feet x100
   FOCUS_UNIT:    0xd006, // CONFIRMED u8, 1 = metre, 2 = feet
   FOCUS_MODE:    0xd007, // CONFIRMED u8, 1 = auto, 2 = manual
-  SHUTTER_ANGLE: 0xd00e, // CONFIRMED u32, degrees x1000 (360000 = 360.0)
+  // CONFIRMED WRITABLE with the same recipe as iris: physical SHUTTER switch
+  // ON, then SHUTTER_MODE = 2, then angle values stick (verified 90-300 deg).
+  SHUTTER_ANGLE: 0xd00e, // u32, degrees x1000 (360000 = 360.0 = shutter off)
+  // CONFIRMED: the shutter Auto/Manual gate. 2 unlocks SHUTTER_ANGLE writes.
+  SHUTTER_MODE:  0xd010,
   WB_PRESET_K:   0xd086, // CONFIRMED u16, kelvin, step 100
   // CONFIRMED: three positions tracking the PRESET/A/B switch, and the only
   // exposure-side property observed to accept a write.
